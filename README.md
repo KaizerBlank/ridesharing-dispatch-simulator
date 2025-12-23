@@ -2,20 +2,20 @@
 
 This project implements a dispatch system for an app-based ride-sharing service, developed for the fictitious company "CabAI". The system employs **Discrete Event Simulation (DES)** to process real-time requests and optimize fleet occupancy.
 
-## 📋 About the Project
+## About the Project
 
 The core algorithm decides whether a transport request should be served individually or grouped with others into a shared route (ride-sharing), aiming to reduce operational costs and maximize efficiency. The simulator manages the fleet over time, strictly adhering to constraints such as time windows, vehicle capacity, and route efficiency.
 
 Developed in **C++** as part of the Data Structures course at the Federal University of Minas Gerais (UFMG), this project stands out for its **manual memory management** and the implementation of fundamental data structures without relying on automatic STL containers.
 
-## 🚀 Key Features
+## Key Features
 
 * **Matching Algorithm:** Groups passengers based on geographical proximity (origin/destination), time windows ($\delta$), and minimum efficiency ($\lambda$).
 * **Discrete Event Simulation (DES):** Utilizes a logical clock and a priority queue to process pickup and drop-off events chronologically.
 * **Memory Management:** Manual dynamic allocation of vectors and objects, with rigorous handling to prevent memory leaks.
 * **Custom Data Structures:** Implementation of a MinHeap (for the scheduler) and dynamic arrays from scratch.
 
-## 🛠️ Method and Architecture
+## Method and Architecture
 
 The system operates in two distinct phases:
 
@@ -31,7 +31,7 @@ The system operates in two distinct phases:
 * Controlled by a **Scheduler** based on a **MinHeap**.
 * Processes events (pickup/drop-off/movement) and updates fleet state and final statistics.
 
-## 📊 Complexity Analysis
+## Complexity Analysis
 
 | Component | Time Complexity | Description |
 | :--- | :--- | :--- |
