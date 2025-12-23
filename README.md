@@ -10,30 +10,33 @@ Developed in **C++** as part of the Data Structures course at the Federal Univer
 
 ## 🚀 Key Features
 
-* [cite_start]**Matching Algorithm:** Groups passengers based on geographical proximity (origin/destination), time windows ($\delta$), and minimum efficiency ($\lambda$)[cite: 203, 258].
-* [cite_start]**Discrete Event Simulation (DES):** Utilizes a logical clock and a priority queue to process pickup and drop-off events chronologically[cite: 204, 267].
-* [cite_start]**Memory Management:** Manual dynamic allocation of vectors and objects, with rigorous handling to prevent **memory leaks**[cite: 333].
-* [cite_start]**Custom Data Structures:** Implementation of a **MinHeap** (for the scheduler) and dynamic arrays from scratch[cite: 237, 309].
+* **Matching Algorithm:** Groups passengers based on geographical proximity (origin/destination), time windows ($\delta$), and minimum efficiency ($\lambda$).
+* **Discrete Event Simulation (DES):** Utilizes a logical clock and a priority queue to process pickup and drop-off events chronologically.
+* **Memory Management:** Manual dynamic allocation of vectors and objects, with rigorous handling to prevent memory leaks.
+* **Custom Data Structures:** Implementation of a MinHeap (for the scheduler) and dynamic arrays from scratch.
 
 ## 🛠️ Method and Architecture
 
 The system operates in two distinct phases:
 
-1.  **Dispatch (Matching):**
-    * Iterates through temporally sorted demands.
-    * [cite_start]Checks for potential ride-sharing candidates satisfying: Capacity $\le \eta$, Delay $\le \delta$, and Efficiency $\ge \lambda$[cite: 254].
-    * [cite_start]Constructs routes following a FIFO (First-In, First-Out) logic for pickups and drop-offs[cite: 262].
+### 1. Dispatch (Matching)
+* Iterates through temporally sorted demands.
+* Checks for potential ride-sharing candidates satisfying:
+    * Capacity $\le \eta$
+    * Delay $\le \delta$
+    * Efficiency $\ge \lambda$
+* Constructs routes following a FIFO (First-In, First-Out) logic for pickups and drop-offs.
 
-2.  **Simulation Engine:**
-    * Controlled by a **Scheduler** based on a *MinHeap*.
-    * [cite_start]Processes events (pickup/drop-off/movement) and updates fleet state and final statistics[cite: 266, 270].
+### 2. Simulation Engine
+* Controlled by a **Scheduler** based on a **MinHeap**.
+* Processes events (pickup/drop-off/movement) and updates fleet state and final statistics.
 
 ## 📊 Complexity Analysis
 
 | Component | Time Complexity | Description |
 | :--- | :--- | :--- |
-| **Dispatch Algorithm** | $O(N^2)$ | [cite_start]Dominated by nested loops comparing each demand with future candidates[cite: 287, 302]. |
-| **Simulation Engine** | $O(N \log N)$ | [cite_start]Processing $2N$ events, where each Heap operation costs $O(\log N)$[cite: 296]. |
-| **Space (Memory)** | $O(N)$ | [cite_start]Linear growth to store demands, rides, and events in the Heap[cite: 316]. |
+| **Dispatch Algorithm** | $O(N^2)$ | Dominated by nested loops comparing each demand with future candidates. |
+| **Simulation Engine** | $O(N \log N)$ | Processing $2N$ events, where each Heap operation costs $O(\log N)$. |
+| **Space (Memory)** | $O(N)$ | Linear growth to store demands, rides, and events in the Heap. |
 
-*Note: N is the number of input demands.*
+> **Note:** $N$ is the number of input demands.
