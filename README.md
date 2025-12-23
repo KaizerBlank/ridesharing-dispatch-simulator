@@ -36,4 +36,4 @@ O sistema opera em duas fases distintas:
 | **Motor de Simulação** | $O(N \log N)$ | Processamento de $2N$ eventos, onde cada operação no Heap custa $O(\log N)$. |
 | **Espaço (Memória)** | $O(N)$ | Crescimento linear para armazenar demandas, corridas e eventos no Heap. |
 
-*Nota: $N$ é o número de demandas de entrada.*
+*Nota: N é o número de demandas de entrada.*
