@@ -1,39 +1,39 @@
-# Simulador de Despacho de Corridas (Ride-Sharing Dispatch)
+# Ride-Sharing Dispatch Simulator
 
-Este projeto implementa um sistema de despacho de transporte por aplicativo focado em *ride-sharing* (corridas compartilhadas), desenvolvido para a empresa fictícia "Cabe Aí" (CabAI). O sistema utiliza **Simulação de Eventos Discretos (SED)** para processar solicitações em tempo real e otimizar a ocupação da frota.
+This project implements a dispatch system for an app-based ride-sharing service, developed for the fictitious company "CabAI". The system employs **Discrete Event Simulation (DES)** to process real-time requests and optimize fleet occupancy.
 
-## Sobre o Projeto
+## 📋 About the Project
 
-O objetivo do algoritmo é decidir se uma demanda de transporte deve ser atendida individualmente ou agrupada com outras em uma única rota, visando reduzir custos e maximizar a eficiência. O simulador gerencia a frota ao longo do tempo, respeitando restrições rígidas de janelas temporais, capacidade do veículo e eficiência da rota.
+The core algorithm decides whether a transport request should be served individually or grouped with others into a shared route (ride-sharing), aiming to reduce operational costs and maximize efficiency. The simulator manages the fleet over time, strictly adhering to constraints such as time windows, vehicle capacity, and route efficiency.
 
-Desenvolvido em **C++** como parte da disciplina de Estruturas de Dados (UFMG), o projeto destaca-se pelo **gerenciamento manual de memória** e implementação de estruturas de dados fundamentais sem o uso de contêineres automáticos da STL.
+Developed in **C++** as part of the Data Structures course at the Federal University of Minas Gerais (UFMG), this project stands out for its **manual memory management** and the implementation of fundamental data structures without relying on automatic STL containers.
 
-## Funcionalidades Principais
+## 🚀 Key Features
 
-* **Algoritmo de Emparelhamento (Matching):** Agrupa passageiros baseado em proximidade geográfica (origem/destino), janelas de tempo ($\delta$) e eficiência mínima ($\lambda$).
-* **Simulação de Eventos Discretos (SED):** Utiliza um relógio lógico e uma fila de prioridade para processar eventos de embarque e desembarque cronologicamente.
-* **Gerenciamento de Memória:** Alocação dinâmica manual de vetores e objetos, com tratamento rigoroso para evitar vazamentos (*memory leaks*).
-* **Estruturas de Dados Personalizadas:** Implementação própria de *MinHeap* (para o escalonador) e vetores dinâmicos.
+* [cite_start]**Matching Algorithm:** Groups passengers based on geographical proximity (origin/destination), time windows ($\delta$), and minimum efficiency ($\lambda$)[cite: 203, 258].
+* [cite_start]**Discrete Event Simulation (DES):** Utilizes a logical clock and a priority queue to process pickup and drop-off events chronologically[cite: 204, 267].
+* [cite_start]**Memory Management:** Manual dynamic allocation of vectors and objects, with rigorous handling to prevent **memory leaks**[cite: 333].
+* [cite_start]**Custom Data Structures:** Implementation of a **MinHeap** (for the scheduler) and dynamic arrays from scratch[cite: 237, 309].
 
-## Método e Arquitetura
+## 🛠️ Method and Architecture
 
-O sistema opera em duas fases distintas:
+The system operates in two distinct phases:
 
-1.  **Despacho (Matching):**
-    * Itera sobre as demandas ordenadas temporalmente.
-    * Verifica candidatos a compartilhamento (carona) que satisfaçam: Capacidade $\le \eta$, Atraso $\le \delta$ e Eficiência $\ge \lambda$.
-    * Define rotas seguindo a lógica FIFO (First-In, First-Out) para coletas e entregas.
+1.  **Dispatch (Matching):**
+    * Iterates through temporally sorted demands.
+    * [cite_start]Checks for potential ride-sharing candidates satisfying: Capacity $\le \eta$, Delay $\le \delta$, and Efficiency $\ge \lambda$[cite: 254].
+    * [cite_start]Constructs routes following a FIFO (First-In, First-Out) logic for pickups and drop-offs[cite: 262].
 
-2.  **Motor de Simulação:**
-    * Controlado por um **Escalonador (Scheduler)** baseado em *MinHeap*.
-    * Processa eventos (coleta/entrega/deslocamento) e atualiza o estado da frota e estatísticas finais.
+2.  **Simulation Engine:**
+    * Controlled by a **Scheduler** based on a *MinHeap*.
+    * [cite_start]Processes events (pickup/drop-off/movement) and updates fleet state and final statistics[cite: 266, 270].
 
-## Análise de Complexidade
+## 📊 Complexity Analysis
 
-| Componente | Complexidade de Tempo | Descrição |
+| Component | Time Complexity | Description |
 | :--- | :--- | :--- |
-| **Algoritmo de Despacho** | $O(N^2)$ | Dominado por laços aninhados que comparam cada demanda com candidatos futuros. |
-| **Motor de Simulação** | $O(N \log N)$ | Processamento de $2N$ eventos, onde cada operação no Heap custa $O(\log N)$. |
-| **Espaço (Memória)** | $O(N)$ | Crescimento linear para armazenar demandas, corridas e eventos no Heap. |
+| **Dispatch Algorithm** | $O(N^2)$ | [cite_start]Dominated by nested loops comparing each demand with future candidates[cite: 287, 302]. |
+| **Simulation Engine** | $O(N \log N)$ | [cite_start]Processing $2N$ events, where each Heap operation costs $O(\log N)$[cite: 296]. |
+| **Space (Memory)** | $O(N)$ | [cite_start]Linear growth to store demands, rides, and events in the Heap[cite: 316]. |
 
-*Nota: N é o número de demandas de entrada.*
+*Note: N is the number of input demands.*
